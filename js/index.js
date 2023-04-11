@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
     
     
     const starsImg = new Image()
-    starsImg.src = '/Images/Space_Stars2.png'
+    starsImg.src = '/Images/starry-night-sky.jpg'
     
     const playerImg = new Image()
     playerImg.src = '/Images/pena.png'
@@ -100,19 +100,14 @@ window.addEventListener('load', () => {
         cancelAnimationFrame();
     }  else {
     requestAnimationFrame(animate);
-    } 
-    
-    
-    
-    
+    }  
     }
     
+
     const startGame = () => {
     document.querySelector('.game-intro').style.display = 'none';
     document.querySelector('#game-board').style.display = 'block';
     animate()
-    
-    
     };
     
     
