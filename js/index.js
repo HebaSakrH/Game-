@@ -14,29 +14,31 @@ window.addEventListener('load', () => {
     let playerWidth = 150;
     let playerHeight = 150;
     let animationId;
+    let beerX = 0;
+    let beerY =0;
 
 
     
     //background
     const starsImg = new Image()
-    starsImg.src = '../Images/starry-night-sky.jpg'
+    starsImg.src = '.../Images/Space_Stars8.png'
     let starsX = 0;
     let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
-    playerImg.src = '../Images/pena2.png'
+    playerImg.src = '.../Images/pena2.png'
     //obstecals draw
     const mushroomImg = new Image()
-    mushroomImg.src = '../Images/mushroom.png'
+    mushroomImg.src = '.../Images/mushroom.png'
     
     const escobarImg = new Image()
-    escobarImg.src = '../Images/pablo.png'
+    escobarImg.src = '.../Images/pablo.png'
     
     const beerImg = new Image()
-    beerImg.src ='../Images/beer.png'
+    beerImg.src ='.../Images/beer.png'
     
     const groguImg = new Image()
-    groguImg.src ='../Images/grogu.png'
+    groguImg.src ='.../Images/grogu.png'
     //
 
     //keyboard keys reference 
@@ -60,7 +62,6 @@ window.addEventListener('load', () => {
     
     let obstaclesArr = [ { Image: mushroomImg, x:800,y: randomYPlacement(), width: 80, height: 80 },
     { Image: escobarImg, x: 1000, y: randomYPlacement(), width: 250, height: 150 },
-    { Image: beerImg, x: 900, y: randomYPlacement(), width:150, height: 70 },
     { Image: groguImg, x: 800, y: randomYPlacement(), width: 90, height: 90 }
     ];
     
@@ -70,21 +71,24 @@ window.addEventListener('load', () => {
     ctx.drawImage(starsImg, starsX, 0, canvas.width, canvas.height);
     // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
 
-    starsX -= speed;
-    // starsX %= canvas.width
-    stars2 -= speed;
+    // starsX -= speed;
+    // // starsX %= canvas.width
+    // stars2 -= speed;
 
-    if (starsX > canvas.width) {
-        starsX = -canvas.width
-    } 
-    if (stars2 > canvas.width) {
-    stars2 = -canvas.width
-    };
+    // if (starsX > canvas.width) {
+    //     starsX = -canvas.width
+    // } 
+    // if (stars2 > canvas.width) {
+    // stars2 = -canvas.width
+    // };
 
 
 
-    ctx.drawImage(playerImg, playerX, playerY, 300, 250) 
-    
+    ctx.drawImage(playerImg, playerX, playerY, 300, 250);
+    let beer = ctx.drawImage(beerImg, 900, randomYPlacement(), 150, 70);
+
+
+
 
 
     //obstcales loop
@@ -95,14 +99,15 @@ window.addEventListener('load', () => {
     obstaclesArr[i].y,
     obstaclesArr[i].width,
     obstaclesArr[i].height
-    );
+    )
     
     obstaclesArr[i].x -= speed;
     console.log(speed)
     if(obstaclesArr[i].x < 0) {
-    obstaclesArr[i].x = 1100;
+    obstaclesArr[i].x = 1000;
     obstaclesArr[i].y = randomYPlacement()
     score++
+    speed++
     } 
      
     if (
@@ -113,6 +118,14 @@ window.addEventListener('load', () => {
       ) {
      isGameOver = true;
       } 
+      if (
+        playerX < beer.x + beer.width &&
+        playerX + playerWidth > beer.x &&
+        playerY < beer.y + beer.height &&
+        playerHeight + playerY > beer.y
+      ) {
+       score++
+      }
     }
     
 
