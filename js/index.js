@@ -75,8 +75,8 @@ window.addEventListener('load', () => {
     //Game Loop 
     const animate = () => {
     ctx.clearRect(0 , 0, canvas.width, canvas.height);
-    ctx.drawImage(starsImg, starsX, 0, canvas.width, canvas.height);
-    ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
+    ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
+    // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
 
 //    starsX %= canvas.width
 //     starsX -= speed;
