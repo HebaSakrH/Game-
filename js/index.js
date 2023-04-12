@@ -24,7 +24,7 @@ window.addEventListener('load', () => {
     let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
-    playerImg.src = '/Images/pena.png'
+    playerImg.src = '/Images/pena2.png'
     //obstecals draw
     const mushroomImg = new Image()
     mushroomImg.src = '/Images/mushroom.png'
@@ -59,7 +59,7 @@ window.addEventListener('load', () => {
     }
     
     let obstaclesArr = [ { Image: mushroomImg, x:800,y: randomYPlacement(), width: 80, height: 80 },
-    { Image: escobarImg, x: 1000, y: randomYPlacement(), width: 200, height: 100 },
+    { Image: escobarImg, x: 1000, y: randomYPlacement(), width: 250, height: 150 },
     { Image: beerImg, x: 900, y: randomYPlacement(), width:150, height: 70 },
     { Image: groguImg, x: 800, y: randomYPlacement(), width: 90, height: 90 }
     ];
@@ -83,7 +83,7 @@ window.addEventListener('load', () => {
 
 
 
-    ctx.drawImage(playerImg, playerX, playerY, 150, 150) 
+    ctx.drawImage(playerImg, playerX, playerY, 300, 250) 
     
 
 
@@ -135,13 +135,19 @@ window.addEventListener('load', () => {
 }
 
 let restartGame = () => {
- playerX = 0;
- playerY = 0;
- restartBtn.style.display ='none';
- isGameOver = false;
- canvas.style.display ='block';
- requestAnimationFrame(startGame)
-//  startGame()
+    window.location.reload();
+//  playerX = 0;
+//  playerY = 0;
+//  restartBtn.style.display ='none';
+//  isGameOver = false;
+//  canvas.style.display ='block';
+//  obstaclesArr[0].x = 800;
+//  obstaclesArr[1].x = 1000;
+//  obstaclesArr[2].x = 900;
+//  obstaclesArr[3].x = 800;
+// console.log(obstaclesArr)
+//  requestAnimationFrame(startGame)
+// //  startGame()
 }
 
 const startGame = () => {
