@@ -16,29 +16,37 @@ window.addEventListener('load', () => {
     let animationId;
     let beerX = 0;
     let beerY =0;
+    let beerWidth = 150;
+    let beerHeight = 70;
+    // let gameOverX = 0;
+    // let gameOverY = 0;
+
 
 
     
     //background
     const starsImg = new Image()
-    starsImg.src = '../Images/Space_Stars8.png'
-    let starsX = 0;
-    let stars2 = canvas.width;
+    starsImg.src = 'Images/starry-night-sky.jpg'
+    // let starsX = 0;
+    // let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
-    playerImg.src = '../Images/pena2.png'
+    playerImg.src = 'Images/pena2.png'
     //obstecals draw
     const mushroomImg = new Image()
-    mushroomImg.src = '../Images/mushroom.png'
+    mushroomImg.src = 'Images/mushroom.png'
     
     const escobarImg = new Image()
-    escobarImg.src = '../Images/pablo.png'
+    escobarImg.src = 'Images/pablo.png'
     
     const beerImg = new Image()
-    beerImg.src ='../Images/beer.png'
+    beerImg.src ='Images/beer.png'
     
     const groguImg = new Image()
-    groguImg.src ='../Images/grogu.png'
+    groguImg.src ='Images/grogu.png'
+
+    // const gameOverImg = new Image()
+    // gameOverImg.src ='../Images/psychotic Pedro.gif'
     //
 
     //keyboard keys reference 
@@ -50,7 +58,7 @@ window.addEventListener('load', () => {
     //speed and progress
     let isGameOver = false;
     let score = 0;
-    let speed = 4;
+    let speed = 3;
     
     //obstcales random possion 
     let randomYPlacement = () => {
@@ -68,7 +76,7 @@ window.addEventListener('load', () => {
     //Game Loop 
     const animate = () => {
     ctx.clearRect(0 , 0, canvas.width, canvas.height);
-    ctx.drawImage(starsImg, starsX, 0, canvas.width, canvas.height);
+    ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
     // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
 
     // starsX -= speed;
@@ -85,7 +93,7 @@ window.addEventListener('load', () => {
 
 
     ctx.drawImage(playerImg, playerX, playerY, 300, 250);
-    let beer = ctx.drawImage(beerImg, 900, randomYPlacement(), 150, 70);
+    ctx.drawImage(beerImg, 900, beerY, 150, 70);
 
 
 
@@ -118,33 +126,45 @@ window.addEventListener('load', () => {
       ) {
      isGameOver = true;
       } 
+        
       if (
-        playerX < beer.x + beer.width &&
-        playerX + playerWidth > beer.x &&
-        playerY < beer.y + beer.height &&
-        playerHeight + playerY > beer.y
-      ) {
-       score++
-      }
-    }
+          playerX < beerX + beerWidth &&
+          playerX + playerWidth > beerX &&
+          playerY < beerY + beerHeight &&
+          playerHeight + playerY > beerY
+          ) {
+              score++
+              console.log("beer")
+            }
+
+            beerX -= speed;
+            if (beerX.x < 0) {
+              beerX.x = 1000;
+              beerY = randomYPlacement()
+            }
+        }
     
 
     if (isGameOver) {
      restartBtn.style.display ='block';
      cancelAnimationFrame(animationId);
+     ctx.font = "Press Start 2P"
+     ctx.fillText('You killed Pedro :(', 700, 300)
+     ctx.fillStyle = "red"
+    //  ctx.drawImage(gameOverImg, gameOverX, gameOverY, 100, 350)
     }  else {
      animationId = requestAnimationFrame(animate);
     }  
 
     //player movment 
     if(isMovingDown){
-        playerY +=2
+        playerY +=3
     } else if (isMovingUp) {
-        playerY -=2
+        playerY -=3
     } else if (isMovingLeft) {
-        playerX -=2 
+        playerX -=3 
     } else if (isMovingRight) {
-        playerX +=2
+        playerX +=3
     }      
 }
 
@@ -167,13 +187,16 @@ let restartGame = () => {
 const startGame = () => {
 document.querySelector('.game-intro').style.display = 'none';
 document.querySelector('#game-board').style.display = 'block';
+
     animate()
     };
 
 
 
 document.getElementById('start-button').addEventListener('click', () => {
+// document.getElementById('score').innerHTML = 'Score' + score;
 startGame()
+
 console.log('startBtn clicked')   
 
 
