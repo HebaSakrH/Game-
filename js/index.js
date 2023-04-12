@@ -3,8 +3,7 @@
 window.addEventListener('load', () => {
     const canvas = document.querySelector('#canvas')
     const ctx = canvas.getContext('2d')
-    console.log(ctx)
-     
+    const scoreElement = document.getElementById('score');
     const restartBtn = document.getElementById('restart');
     restartBtn.style.display = 'none';
 
@@ -14,8 +13,8 @@ window.addEventListener('load', () => {
     let playerWidth = 150;
     let playerHeight = 150;
     let animationId;
-    let beerX = 0;
-    let beerY =0;
+    let beerX = 900;
+    let beerY = 0;
     let beerWidth = 150;
     let beerHeight = 70;
     // let gameOverX = 0;
@@ -27,8 +26,8 @@ window.addEventListener('load', () => {
     //background
     const starsImg = new Image()
     starsImg.src = 'Images/starry-night-sky.jpg'
-    // let starsX = 0;
-    // let stars2 = canvas.width;
+    let starsX = 0;
+    let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
     playerImg.src = 'Images/pena2.png'
@@ -76,24 +75,24 @@ window.addEventListener('load', () => {
     //Game Loop 
     const animate = () => {
     ctx.clearRect(0 , 0, canvas.width, canvas.height);
-    ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
-    // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
+    ctx.drawImage(starsImg, starsX, 0, canvas.width, canvas.height);
+    ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
 
+   // starsX %= canvas.width
     // starsX -= speed;
-    // // starsX %= canvas.width
     // stars2 -= speed;
 
-    // if (starsX > canvas.width) {
-    //     starsX = -canvas.width
+    // if (starsX < -canvas.width) {
+    //     starsX = canvas.width
     // } 
-    // if (stars2 > canvas.width) {
-    // stars2 = -canvas.width
+    // if (stars2 < -canvas.width) {
+    // stars2 = canvas.width
     // };
 
 
 
     ctx.drawImage(playerImg, playerX, playerY, 300, 250);
-    ctx.drawImage(beerImg, 900, beerY, 150, 70);
+    ctx.drawImage(beerImg, beerX, beerY, 150, 70);
 
 
 
@@ -114,8 +113,8 @@ window.addEventListener('load', () => {
     if(obstaclesArr[i].x < 0) {
     obstaclesArr[i].x = 1000;
     obstaclesArr[i].y = randomYPlacement()
-    score++
-    speed++
+    // score++
+    // speed++
     } 
      
     if (
@@ -134,13 +133,16 @@ window.addEventListener('load', () => {
           playerHeight + playerY > beerY
           ) {
               score++
-              console.log("beer")
+              console.log(score)
+              beerX = 1000;
+              beerY = randomYPlacement()
+              scoreElement.innerHTML = score
             }
 
-            beerX -= speed;
-            if (beerX.x < 0) {
-              beerX.x = 1000;
-              beerY = randomYPlacement()
+            beerX -= 2;
+            if (beerX < 0) {
+                beerX = 1000;
+                beerY = randomYPlacement()
             }
         }
     
