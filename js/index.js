@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
     
     //background
     const starsImg = new Image()
-    starsImg.src = 'Images/starry-night-sky.jpg'
+    starsImg.src = '/Images/Space_Stars2.png'
     let starsX = 0;
     let stars2 = canvas.width;
     //player 
