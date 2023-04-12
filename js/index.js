@@ -172,18 +172,6 @@ window.addEventListener('load', () => {
 
 let restartGame = () => {
     window.location.reload();
-//  playerX = 0;
-//  playerY = 0;
-//  restartBtn.style.display ='none';
-//  isGameOver = false;
-//  canvas.style.display ='block';
-//  obstaclesArr[0].x = 800;
-//  obstaclesArr[1].x = 1000;
-//  obstaclesArr[2].x = 900;
-//  obstaclesArr[3].x = 800;
-// console.log(obstaclesArr)
-//  requestAnimationFrame(startGame)
-// //  startGame()
 }
 
 const startGame = () => {
