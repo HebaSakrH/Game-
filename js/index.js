@@ -25,24 +25,24 @@ window.addEventListener('load', () => {
     
     //background
     const starsImg = new Image()
-    starsImg.src = '/Images/Space_Stars2.png'
+    starsImg.src = '/Images/space.png'
     let starsX = 0;
     let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
-    playerImg.src = '/Images/pena2.png'
+    playerImg.src = 'Images/pena2.png'
     //obstecals draw
     const mushroomImg = new Image()
-    mushroomImg.src = '/Images/mushroom.png'
+    mushroomImg.src = 'Images/mushroom.png'
     
     const escobarImg = new Image()
-    escobarImg.src = '/Images/pablo.png'
+    escobarImg.src = 'Images/pablo.png'
     
     const beerImg = new Image()
-    beerImg.src ='/Images/beer.png'
+    beerImg.src ='Images/beer.png'
     
     const groguImg = new Image()
-    groguImg.src ='/Images/grogu.png'
+    groguImg.src ='Images/grogu.png'
 
     // const gameOverImg = new Image()
     // gameOverImg.src ='../Images/psychotic Pedro.gif'
@@ -69,7 +69,7 @@ window.addEventListener('load', () => {
     
     let obstaclesArr = [ { Image: mushroomImg, x:800,y: randomYPlacement(), width: 80, height: 80 },
     { Image: escobarImg, x: 1000, y: randomYPlacement(), width: 250, height: 150 },
-    { Image: groguImg, x: 800, y: randomYPlacement(), width: 90, height: 90 }
+    { Image: groguImg, x: 800, y: randomYPlacement(), width: 150, height: 150 }
     ];
     
     //Game Loop 
@@ -78,16 +78,16 @@ window.addEventListener('load', () => {
     ctx.drawImage(starsImg, starsX, 0, canvas.width, canvas.height);
     ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
 
-   // starsX %= canvas.width
-    // starsX -= speed;
-    // stars2 -= speed;
+//    starsX %= canvas.width
+//     starsX -= speed;
+//     stars2 -= speed;
 
-    // if (starsX < -canvas.width) {
-    //     starsX = canvas.width
-    // } 
-    // if (stars2 < -canvas.width) {
-    // stars2 = canvas.width
-    // };
+//     if (starsX < -canvas.width) {
+//         starsX = canvas.width
+//     } 
+//     if (stars2 < -canvas.width) {
+//     stars2 = canvas.width
+//     };
 
 
 
@@ -113,8 +113,7 @@ window.addEventListener('load', () => {
     if(obstaclesArr[i].x < 0) {
     obstaclesArr[i].x = 1000;
     obstaclesArr[i].y = randomYPlacement()
-    // score++
-    // speed++
+    speed++
     } 
      
     if (
