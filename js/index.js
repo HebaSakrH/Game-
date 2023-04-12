@@ -19,24 +19,24 @@ window.addEventListener('load', () => {
     
     //background
     const starsImg = new Image()
-    starsImg.src = './Images/starry-night-sky.jpg'
+    starsImg.src = '../Images/starry-night-sky.jpg'
     let starsX = 0;
     let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
-    playerImg.src = './Images/pena2.png'
+    playerImg.src = '../Images/pena2.png'
     //obstecals draw
     const mushroomImg = new Image()
-    mushroomImg.src = './Images/mushroom.png'
+    mushroomImg.src = '../Images/mushroom.png'
     
     const escobarImg = new Image()
-    escobarImg.src = './Images/pablo.png'
+    escobarImg.src = '../Images/pablo.png'
     
     const beerImg = new Image()
-    beerImg.src ='./Images/beer.png'
+    beerImg.src ='../Images/beer.png'
     
     const groguImg = new Image()
-    groguImg.src ='./Images/grogu.png'
+    groguImg.src ='../Images/grogu.png'
     //
 
     //keyboard keys reference 
@@ -70,16 +70,16 @@ window.addEventListener('load', () => {
     ctx.drawImage(starsImg, starsX, 0, canvas.width, canvas.height);
     // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
 
-    // starsX -= speed;
-    // // starsX %= canvas.width
-    // stars2 -= speed;
+    starsX -= speed;
+    // starsX %= canvas.width
+    stars2 -= speed;
 
-    // if (starsX > canvas.width) {
-    //     starsX = -canvas.width
-    // } 
-    // if (stars2 > canvas.width) {
-    // stars2 = -canvas.width
-    // };
+    if (starsX > canvas.width) {
+        starsX = -canvas.width
+    } 
+    if (stars2 > canvas.width) {
+    stars2 = -canvas.width
+    };
 
 
 
