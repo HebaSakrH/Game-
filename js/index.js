@@ -27,7 +27,7 @@ window.addEventListener('load', () => {
     const starsImg = new Image()
     starsImg.src = '/Images/space.png'
     let starsX = 0;
-    let stars2 = canvas.width;
+    let stars2 = 0;
     //player 
     const playerImg = new Image()
     playerImg.src = 'Images/pena2.png'
