@@ -19,24 +19,24 @@ window.addEventListener('load', () => {
     
     //background
     const starsImg = new Image()
-    starsImg.src = '/Images/starry-night-sky.jpg'
+    starsImg.src = './Images/starry-night-sky.jpg'
     let starsX = 0;
     let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
-    playerImg.src = '/Images/pena2.png'
+    playerImg.src = './Images/pena2.png'
     //obstecals draw
     const mushroomImg = new Image()
-    mushroomImg.src = '/Images/mushroom.png'
+    mushroomImg.src = './Images/mushroom.png'
     
     const escobarImg = new Image()
-    escobarImg.src = '/Images/pablo.png'
+    escobarImg.src = './Images/pablo.png'
     
     const beerImg = new Image()
-    beerImg.src ='/Images/beer.png'
+    beerImg.src ='./Images/beer.png'
     
     const groguImg = new Image()
-    groguImg.src ='/Images/grogu.png'
+    groguImg.src ='./Images/grogu.png'
     //
 
     //keyboard keys reference 
@@ -102,6 +102,7 @@ window.addEventListener('load', () => {
     if(obstaclesArr[i].x < 0) {
     obstaclesArr[i].x = 1100;
     obstaclesArr[i].y = randomYPlacement()
+    score++
     } 
      
     if (
