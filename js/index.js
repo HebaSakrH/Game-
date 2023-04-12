@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
     
     //background
     const starsImg = new Image()
-    starsImg.src = '/Images/space.png'
+    starsImg.src = '/Images/Space_Stars8.png'
     let starsX = 0;
     let stars2 = 0;
     //player 
