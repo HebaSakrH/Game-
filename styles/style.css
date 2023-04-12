@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   background: var(--color-black-1);
   font-family: "Press Start 2P", cursive;
-  background-color: black;
+  background-color: rgb(2, 2, 2);
   background-image: url("../Images/Space_Stars2.png");
 }
 
@@ -71,13 +71,14 @@ body button {
   border-radius: 5px;
   margin-bottom: 20px;
   font-family: "Press Start 2P", cursive;
+  align-self: center;
 }
 
 
 #game-board {
   display: none;
   padding: 20px 0px;
-  background-color: rgb(9, 9, 9);
+  background-color: rgb(21, 26, 47);
 }
 /* 
  #restart button {

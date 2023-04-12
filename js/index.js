@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
     
     //background
     const starsImg = new Image()
-    starsImg.src = '/Images/Space_Stars8.png'
+    starsImg.src = '/Images/space.png'
     let starsX = 0;
     let stars2 = 0;
     //player 
@@ -75,7 +75,7 @@ window.addEventListener('load', () => {
     //Game Loop 
     const animate = () => {
     ctx.clearRect(0 , 0, canvas.width, canvas.height);
-    ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
+    // ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
     // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
 
 //    starsX %= canvas.width
@@ -149,9 +149,9 @@ window.addEventListener('load', () => {
     if (isGameOver) {
      restartBtn.style.display ='block';
      cancelAnimationFrame(animationId);
-     ctx.font = "Press Start 2P"
+     ctx.fillStyle = '#BF4D28';
+     ctx.font = "100px Press Start 2P"
      ctx.fillText('You killed Pedro :(', 700, 300)
-     ctx.fillStyle = "red"
     //  ctx.drawImage(gameOverImg, gameOverX, gameOverY, 100, 350)
     }  else {
      animationId = requestAnimationFrame(animate);
@@ -183,7 +183,7 @@ document.querySelector('#game-board').style.display = 'block';
 
 
 document.getElementById('start-button').addEventListener('click', () => {
-// document.getElementById('score').innerHTML = 'Score' + score;
+document.getElementById('score').innerHTML = 'Score' + score;
 startGame()
 
 console.log('startBtn clicked')   
