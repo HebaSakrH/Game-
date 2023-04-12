@@ -30,19 +30,19 @@ window.addEventListener('load', () => {
     let stars2 = canvas.width;
     //player 
     const playerImg = new Image()
-    playerImg.src = 'Images/pena2.png'
+    playerImg.src = '/Images/pena2.png'
     //obstecals draw
     const mushroomImg = new Image()
-    mushroomImg.src = 'Images/mushroom.png'
+    mushroomImg.src = '/Images/mushroom.png'
     
     const escobarImg = new Image()
-    escobarImg.src = 'Images/pablo.png'
+    escobarImg.src = '/Images/pablo.png'
     
     const beerImg = new Image()
-    beerImg.src ='Images/beer.png'
+    beerImg.src ='/Images/beer.png'
     
     const groguImg = new Image()
-    groguImg.src ='Images/grogu.png'
+    groguImg.src ='/Images/grogu.png'
 
     // const gameOverImg = new Image()
     // gameOverImg.src ='../Images/psychotic Pedro.gif'
