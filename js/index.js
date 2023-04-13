@@ -55,8 +55,11 @@ window.addEventListener('load', () => {
     const gameSound = new Audio('sounds/theFoyer.wav')
     gameSound.volume = 0.1;
     const bulletSound = new Audio('sounds/pe.wav')
+    const beerSlurp = new Audio('sounds/beerSlurp.mp3')
     // const bulletShot = new Audio('/sounds/pewpew.wav')
     const gameOver = new Audio ('sounds/damit.mp3')
+
+
 
 
     // const gameOverImg = new Image()
