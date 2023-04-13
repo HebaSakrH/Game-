@@ -42,8 +42,6 @@ beerImg.src ='images/beer.png'
 const groguImg = new Image()
 groguImg.src ='images/grogu.png'
 
-const bulletImg = new Image()
-bulletImg.src = 'images/bullet.png'
 
 const gameSound = new Audio('sounds/theFoyer.wav')
 gameSound.volume = 0.1;
