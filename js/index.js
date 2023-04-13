@@ -157,6 +157,7 @@ window.addEventListener('load', () => {
               beerX = 1000;
               beerY = randomYPlacement()
               scoreElement.innerHTML = score
+              beerSlurp.play()
             }
 
         beerX -= 2;
