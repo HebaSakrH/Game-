@@ -17,15 +17,20 @@ window.addEventListener('load', () => {
     let beerY = 0;
     let beerWidth = 150;
     let beerHeight = 70;
-    // let gameOverX = 0;
-    // let gameOverY = 0;
+     
+    let bulletX = 0;
+    let bulletY =  0;
+
+    let gameOverX = 0;
+    let gameOverY = 0;
+
 
 
 
     
     //background
     const starsImg = new Image()
-    starsImg.src = '/Images/space.png'
+    starsImg.src = 'Images/space.png'
     let starsX = 0;
     let stars2 = 0;
     //player 
@@ -46,7 +51,7 @@ window.addEventListener('load', () => {
 
     // const gameOverImg = new Image()
     // gameOverImg.src ='../Images/psychotic Pedro.gif'
-    //
+    
 
     //keyboard keys reference 
     let isMovingDown = false;
@@ -57,7 +62,7 @@ window.addEventListener('load', () => {
     //speed and progress
     let isGameOver = false;
     let score = 0;
-    let speed = 3;
+    let speed = 2;
     
     //obstcales random possion 
     let randomYPlacement = () => {
@@ -75,13 +80,10 @@ window.addEventListener('load', () => {
     //Game Loop 
     const animate = () => {
     ctx.clearRect(0 , 0, canvas.width, canvas.height);
-    // ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
     // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
-
-//    starsX %= canvas.width
 //     starsX -= speed;
 //     stars2 -= speed;
-
 //     if (starsX < -canvas.width) {
 //         starsX = canvas.width
 //     } 
@@ -89,13 +91,17 @@ window.addEventListener('load', () => {
 //     stars2 = canvas.width
 //     };
 
-
-
     ctx.drawImage(playerImg, playerX, playerY, 300, 250);
+
+
+   let  drawBullet = () => {
+    ctx.beginPath();
+    ctx.arc(bulletX, bulletY, 0, 5, Math.PI * 2, false);
+    ctx.fillStyle = 'red';
+    ctx.fill();
+    } 
+
     ctx.drawImage(beerImg, beerX, beerY, 150, 70);
-
-
-
 
 
     //obstcales loop
@@ -111,7 +117,7 @@ window.addEventListener('load', () => {
     obstaclesArr[i].x -= speed;
     console.log(speed)
     if(obstaclesArr[i].x < 0) {
-    obstaclesArr[i].x = 1000;
+    obstaclesArr[i].x = 900;
     obstaclesArr[i].y = randomYPlacement()
     speed++
     } 
@@ -138,11 +144,29 @@ window.addEventListener('load', () => {
               scoreElement.innerHTML = score
             }
 
-            beerX -= 2;
-            if (beerX < 0) {
-                beerX = 1000;
-                beerY = randomYPlacement()
-            }
+        beerX -= 2;
+        if (beerX < 0) {
+        beerX = 1000;
+        beerY = randomYPlacement()
+        }
+        
+
+
+        if (bulletX < 0 ) {
+         drawBullet();
+           obstaclesArr.forEach((element) => {
+            if (
+          bulletX < element.x + element.width &&
+          bulletX > element.x &&
+          bulletY < element.y + element.height &&
+          bulletY > element.y
+          ) {
+          score += 20;
+          element.x = 1000;
+          bulletX = 1000;
+          }
+          });
+        } 
         }
     
 
@@ -177,13 +201,13 @@ const startGame = () => {
 document.querySelector('.game-intro').style.display = 'none';
 document.querySelector('#game-board').style.display = 'block';
 
-    animate()
-    };
+ animate()
+ };
 
 
 
 document.getElementById('start-button').addEventListener('click', () => {
-document.getElementById('score').innerHTML = 'Score' + score;
+// document.getElementById('score').innerHTML = 'Score' + score;
 startGame()
 
 console.log('startBtn clicked')   
@@ -191,26 +215,39 @@ console.log('startBtn clicked')
 
 });
 
+
+
 restartBtn.addEventListener('click', () => {
     restartGame()
+
     console.log( 'start game')
-})
+});
 
     
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowUp') {
+        isMovingUp = true;
+    } else if (event.key === 'ArrowDown') {
+        isMovingDown = true;
+    } else if (event.key === 'ArrowLeft') {
+        isMovingLeft = true;
+    } else if (event.key === 'ArrowRight') {
+        isMovingRight = true;
+    } 
+});
 
- document.addEventListener('keydown', function(event) {
- if (event.key === 'ArrowUp') {
-  isMovingUp = true;
- } else if (event.key === 'ArrowDown') {
-  isMovingDown = true;
- } else if (event.key === 'ArrowLeft') {
- isMovingLeft = true;
- } else if (event.key === 'ArrowRight') {
-  isMovingRight = true;
- } 
- });
-    
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'space') {
+        bulletX = playerX + (playerWidth / 2);
+        bulletY = playerY ;
+        drawBullet()
+        console.log('drawBullet')
+    }
+
+});
+
+
 document.addEventListener('keyup', function(event) {
 isMovingDown = false;
 isMovingUp = false; 
