@@ -23,7 +23,7 @@ let bulletY =  0;
 
 //background
 const starsImg = new Image()
-starsImg.src = 'images/space.png'
+starsImg.src = './images/space.png'
 let starsX = 0;
 let stars2 = 0;
 //player 
