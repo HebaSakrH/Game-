@@ -37,10 +37,10 @@ const escobarImg = new Image()
 escobarImg.src = 'images/pablo.png'
 
 const beerImg = new Image()
-beerImg.src ='images/beer.png'
+beerImg.src = 'images/beer.png'
 
 const groguImg = new Image()
-groguImg.src ='images/grogu.png'
+groguImg.src = 'images/grogu.png'
 
 
 const gameSound = new Audio('/sounds/theFoyer.wav')
