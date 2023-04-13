@@ -23,31 +23,31 @@ let bulletY =  0;
 
 //background
 const starsImg = new Image()
-starsImg.src = './images/space.png'
+starsImg.src = 'images/space.png'
 let starsX = 0;
 let stars2 = 0;
 //player 
 const playerImg = new Image()
-playerImg.src = './images/pena2.png'
+playerImg.src = 'images/pena2.png'
 //obstecals draw
 const mushroomImg = new Image()
-mushroomImg.src = './images/mushroom.png'
+mushroomImg.src = 'images/mushroom.png'
 
 const escobarImg = new Image()
-escobarImg.src = './images/pablo.png'
+escobarImg.src = 'images/pablo.png'
 
 const beerImg = new Image()
-beerImg.src ='./images/beer.png'
+beerImg.src ='images/beer.png'
 
 const groguImg = new Image()
-groguImg.src ='./images/grogu.png'
+groguImg.src ='images/grogu.png'
 
 
-const gameSound = new Audio('sounds/theFoyer.wav')
+const gameSound = new Audio('/sounds/theFoyer.wav')
 gameSound.volume = 0.1;
-const bulletSound = new Audio('sounds/pe.wav')
-const beerSlurp = new Audio('sounds/beerSlurp.wav')
-const gameOver = new Audio ('sounds/damit.mp3')
+const bulletSound = new Audio('/sounds/pe.wav')
+const beerSlurp = new Audio('/sounds/beerSlurp.wav')
+const gameOver = new Audio ('/sounds/damit.mp3')
 
 
 //keyboard keys reference 
