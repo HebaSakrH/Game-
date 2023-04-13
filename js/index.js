@@ -49,6 +49,16 @@ window.addEventListener('load', () => {
     const groguImg = new Image()
     groguImg.src ='Images/grogu.png'
 
+    const bulletImg = new Image()
+    bulletImg.src = 'Images/bullet.png'
+
+    const gameSound = new Audio('/sounds/theFoyer.wav')
+    gameSound.volume = 0.1;
+    const bulletSound = new Audio('/sounds/pe.wav')
+    // const bulletShot = new Audio('/sounds/pewpew.wav')
+    const gameOver = new Audio ('/sounds/damit.mp3')
+
+
     // const gameOverImg = new Image()
     // gameOverImg.src ='../Images/psychotic Pedro.gif'
     
@@ -77,28 +87,30 @@ window.addEventListener('load', () => {
     { Image: groguImg, x: 800, y: randomYPlacement(), width: 150, height: 150 }
     ];
     
+    let bulletsArr = []; 
+
     //Game Loop 
     const animate = () => {
     ctx.clearRect(0 , 0, canvas.width, canvas.height);
     ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
-    // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
-//     starsX -= speed;
-//     stars2 -= speed;
-//     if (starsX < -canvas.width) {
-//         starsX = canvas.width
-//     } 
-//     if (stars2 < -canvas.width) {
-//     stars2 = canvas.width
-//     };
+    ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
+    gameSound.play()
+    // starsX -= speed;
+    // stars2 -= speed;
+    // if (starsX < -canvas.width) {
+    //     starsX = canvas.width
+    // } 
+    // if (stars2 < -canvas.width) {
+    // stars2 = canvas.width
+    // };
+
 
     ctx.drawImage(playerImg, playerX, playerY, 300, 250);
 
 
-   let  drawBullet = () => {
-    ctx.beginPath();
-    ctx.arc(bulletX, bulletY, 0, 5, Math.PI * 2, false);
-    ctx.fillStyle = 'red';
-    ctx.fill();
+   let  drawBullet = (bulletX, bulletY ) => {
+     ctx.drawImage(beerImg, bulletX, bulletY, 80, 50)
+     
     } 
 
     ctx.drawImage(beerImg, beerX, beerY, 150, 70);
@@ -152,22 +164,24 @@ window.addEventListener('load', () => {
         
 
 
-        if (bulletX < 0 ) {
-         drawBullet();
-           obstaclesArr.forEach((element) => {
-            if (
-          bulletX < element.x + element.width &&
-          bulletX > element.x &&
-          bulletY < element.y + element.height &&
-          bulletY > element.y
-          ) {
-          score += 20;
-          element.x = 1000;
-          bulletX = 1000;
-          }
-          });
-        } 
-        }
+  bulletsArr.forEach((bullet, index) => {
+   // let current = obstaclesArr[i]
+
+   drawBullet(bullet.bulletX, bullet.bulletY);
+   bullet.bulletX += 5;
+   if (  bullet.bulletX < obstaclesArr[i].x+ obstaclesArr[i].width &&
+    bullet.bulletX > obstaclesArr[i].x &&
+    bullet.bulletY < obstaclesArr[i].y + obstaclesArr[i].height &&
+    bullet.bulletY > obstaclesArr[i].y) {
+     score += 10; 
+bulletSound.play()
+   obstaclesArr[i].x = 3000;
+   bulletsArr.splice(index, 1)
+   scoreElement.innerHTML = score
+     }
+     });   
+    }
+    
     
 
     if (isGameOver) {
@@ -176,6 +190,7 @@ window.addEventListener('load', () => {
      ctx.fillStyle = '#BF4D28';
      ctx.font = "100px Press Start 2P"
      ctx.fillText('You killed Pedro :(', 700, 300)
+     gameOver.play()
     //  ctx.drawImage(gameOverImg, gameOverX, gameOverY, 100, 350)
     }  else {
      animationId = requestAnimationFrame(animate);
@@ -207,19 +222,13 @@ document.querySelector('#game-board').style.display = 'block';
 
 
 document.getElementById('start-button').addEventListener('click', () => {
-// document.getElementById('score').innerHTML = 'Score' + score;
 startGame()
-
 console.log('startBtn clicked')   
-
-
 });
-
 
 
 restartBtn.addEventListener('click', () => {
     restartGame()
-
     console.log( 'start game')
 });
 
@@ -238,15 +247,18 @@ document.addEventListener('keydown', function(event) {
 });
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'space') {
+    console.log(event, )
+    if (event.code === 'Space') {
         bulletX = playerX + (playerWidth / 2);
-        bulletY = playerY ;
-        drawBullet()
+        bulletY = playerY + 100 ;
+        let bullet = {bulletX, bulletY};
+        bulletsArr.push(bullet)
+        console.log(bulletsArr)
         console.log('drawBullet')
+        // bulletShot.play()
     }
 
 });
-
 
 document.addEventListener('keyup', function(event) {
 isMovingDown = false;
@@ -254,10 +266,6 @@ isMovingUp = false;
 isMovingLeft = false;
 isMovingRight = false;
 });
-     
-
-
-    
-    
+        
 });  
     
