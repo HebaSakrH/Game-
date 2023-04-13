@@ -52,11 +52,11 @@ window.addEventListener('load', () => {
     const bulletImg = new Image()
     bulletImg.src = 'Images/bullet.png'
 
-    const gameSound = new Audio('/sounds/theFoyer.wav')
+    const gameSound = new Audio('sounds/theFoyer.wav')
     gameSound.volume = 0.1;
-    const bulletSound = new Audio('/sounds/pe.wav')
+    const bulletSound = new Audio('sounds/pe.wav')
     // const bulletShot = new Audio('/sounds/pewpew.wav')
-    const gameOver = new Audio ('/sounds/damit.mp3')
+    const gameOver = new Audio ('sounds/damit.mp3')
 
 
     // const gameOverImg = new Image()
