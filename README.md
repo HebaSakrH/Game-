@@ -9,10 +9,10 @@ Space-cal is a game where Pedro Pascal has to travel through space horizontally 
 ## MVP
 
  - Pedro Pascal travels through space horizontally.
- - Mushrooms/Deformed mushrooms appear randomly from the right side of the screen. 
- - Beer cans/cups appear randomly for health points from the right side of the screen. 
- - The game increases difficulty "levels up" with bigger and faster obstacles "Pedro's fans/arch enemies".
- - Game ends with the last health point "Beer". 
+ - Obstacles appear randomly from the right side of the screen. 
+ - Player scores points by shooting enemies using "space key" and catching Beer.  
+ - The game increases difficulty "levels up" with faster obstacles.
+ - Game ends hitting an obstacle. 
 
 ## Backlog
 
@@ -22,12 +22,10 @@ Ability to start the game on increased difficulty lvl
 
 ## Data structure
 
-- Class game-intro.
-- #start-button.
--#game-board.
+HTML
+Css
+JavaScript
 
-## States y States Transitions
-_List of states (views) of your game_
 
 
 ## Task
@@ -39,10 +37,3 @@ Drawing obstacles.
 Start collision points. 
 
 
-
-## Links
-
-- [Trello Link](https://trello.com)
-- [Slides Link](http://slides.com)
-- [Github repository Link](http://github.com)
-- [Deployment Link](http://github.com)

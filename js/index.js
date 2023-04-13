@@ -52,6 +52,8 @@ window.addEventListener('load', () => {
     const bulletImg = new Image()
     bulletImg.src = 'Images/bullet.png'
 
+    // const gameOverGif = new Video('/Images/psychoticPedro.gif')
+
     const gameSound = new Audio('sounds/theFoyer.wav')
     gameSound.volume = 0.1;
     const bulletSound = new Audio('sounds/pe.wav')
@@ -96,7 +98,7 @@ window.addEventListener('load', () => {
     const animate = () => {
     ctx.clearRect(0 , 0, canvas.width, canvas.height);
     ctx.drawImage(starsImg, 0, 0, canvas.width, canvas.height);
-    ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
+    // ctx.drawImage(starsImg, stars2 , 0, canvas.width, canvas.height);
     gameSound.play()
     // starsX -= speed;
     // stars2 -= speed;
@@ -219,7 +221,6 @@ let restartGame = () => {
 const startGame = () => {
 document.querySelector('.game-intro').style.display = 'none';
 document.querySelector('#game-board').style.display = 'block';
-
  animate()
  };
 
